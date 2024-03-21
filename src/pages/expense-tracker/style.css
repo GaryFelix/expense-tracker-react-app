@@ -1,64 +1,919 @@
+@import url("https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Amarante&family=Poppins:wght@200&display=swap");
 
+* {
+  background-color: black;
+}
 
-.expense-tracker {
-    width: 100vw;
+::selection {
+  background-color: #0aa50a;
+  color: white;
+}
+
+.navbar-content {
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.navbar-content .nav-links {
+  /* border: 2px solid green; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.navbar-content .nav-links ul {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-content .nav-links ul li {
+  list-style: none;
+  display: inline;
+  /* border: 2px solid red; */
+}
+
+.navbar-content .nav-links ul li a {
+  text-decoration: none;
+  color: white;
+  margin-right: 15px;
+  padding: 0px 16px;
+  text-transform: uppercase;
+}
+
+.navbar-content .nav-links ul li a:hover {
+  color: #00a700;
+}
+
+.display-name {
+  /* border: 2px solid white; */
+  padding: 20px 20px;
+  text-align: right;
+  display: flex;
+  justify-content: right;
+}
+
+.display-name .name{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* border: 2px solid red; */
+}
+
+.display-name .profile-img{
+  /* border: 2px solid green; */
+  margin-left: 15px;
+}
+
+.display-name .profile-img img{
+  border-radius: 50px;
+}
+
+.display-name h1 {
+  color: white;
+  font-family: "Almendra", serif;
+  font-size: 25px;
+}
+
+.display-name h1 span {
+  text-transform: capitalize !important;
+  color: #00a700;
+}
+
+.display-name .current-time {
+  color: white;
+  font-family: "Almendra", serif;
+  font-size: 20px;
+}
+
+/* Dashboard Content */
+
+.dashboard-content1 {
+  /* border: 2px solid red; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 22px;
+}
+
+.dashboard-content1 .balance {
+  color: white;
+  /* border: 1px solid green; */
+  border-radius: 10px;
+  padding: 10px 80px 0px 15px;
+  background-color: #181818;
+  margin-right: 40px;
+}
+.dashboard-content1 .income {
+  color: white;
+  /* border: 1px solid green; */
+  border-radius: 10px;
+  padding: 10px 80px 0px 15px;
+  background-color: #181818;
+  margin-right: 40px;
+}
+.dashboard-content1 .expenses {
+  color: white;
+  /* border: 1px solid green; */
+  border-radius: 10px;
+  padding: 10px 80px 0px 15px;
+  background-color: #181818;
+}
+
+.dashboard-content1 h4 {
+  color: #00a700;
+  background-color: #181818;
+  font-family: "Almendra", serif;
+  font-size: 30px;
+}
+
+.dashboard-content1 p {
+  background-color: #181818;
+  font-family: "Amarante", serif;
+  font-size: 25px;
+}
+
+/* Add Balance Details */
+
+.add-Balance-Details {
+  /* border: 2px solid red; */
+  margin-top: 65px;
+}
+
+.add-Balance-Details h2 {
+  color: #00a700;
+  text-align: center;
+  font-family: "Almendra", serif;
+  font-size: 35px;
+}
+
+.add-Balance-Details .add-transaction {
+  /* border: 2px solid white; */
+  padding: 10px 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.add-Balance-Details form {
+  /* border: 2px solid yellow !important; */
+  width: 40%;
+  background-color: #181818;
+  border-radius: 10px;
+  padding: 10px 20px 20px 20px;
+}
+
+.add-Balance-Details form label {
+  color: white;
+  background-color: #181818;
+  font-family: "Amarante", serif;
+  margin-bottom: 10px;
+}
+
+.mandatory {
+  color: #00a700;
+  background-color: #181818;
+}
+
+.add-Balance-Details form input {
+  color: white;
+  margin-bottom: 20px;
+  background-color: #181818;
+  /* border-color: #00a700; */
+  border: 2px solid #00a700;
+  border-radius: 6px;
+  padding: 10px 0px 10px 10px;
+}
+
+.add-Balance-Details form input:focus {
+  outline: 2px solid #00a700;
+}
+
+.add-Balance-Details form .form-detail {
+  width: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.add-Balance-Details form .radio-btn {
+  accent-color: #00a700;
+}
+
+.add-Balance-Details form button {
+  color: black;
+  background-color: white;
+  padding: 10px 10px;
+  text-transform: uppercase;
+  font-family: "Amarante", serif;
+  border: transparent;
+  border-radius: 10px;
+}
+
+.add-Balance-Details form button:hover {
+  background-color: #00a700;
+  color: white;
+  border: transparent;
+  transition: all 0.3s ease;
+}
+
+/* display transaction details */
+
+.transactions {
+  /* border: 2px solid red; */
+  margin-top: 40px;
+  padding: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.transactions h3 {
+  color: #00a700;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Almendra", serif;
+}
+
+.transactions ul {
+  /* border: 2px solid yellow; */
+  width: 70%;
+  padding: 15px 15px;
+  border-radius: 5px;
+  background-color: #181818;
+  --sb-track-color: #00a7004d;
+  --sb-thumb-color: #00a700;
+  --sb-size: 7px;
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+
+.transactions ul::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.transactions ul::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 2px;
+}
+
+.transactions ul::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 2px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .transactions ul {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+
+.transactions ul li {
+  list-style: none;
+  color: white;
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.093);
+  background-color: #181818;
+}
+
+.transactions ul li .transaction-description {
+  color: white;
+  width: 100%;
+  text-align: left;
+  text-transform: capitalize;
+  background-color: #181818;
+  font-family: "Amarante", serif;
+  /* border: 2px solid white; */
+}
+
+.transactions ul li .transaction-details {
+  /* border: 2px solid red; */
+  width: 80%;
+  background-color: #181818;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.transactions ul li .transaction-details .transaction-amount {
+  /* border: 2px solid green; */
+  padding-right: 10px;
+  background-color: #181818;
+}
+
+.transactions ul li .transaction-details .transaction-type {
+  /* border: 2px solid green; */
+  text-align: right;
+  text-transform: capitalize;
+  background-color: #181818;
+}
+
+.transactions ul li .transaction-details .transaction-date {
+  /* border: 2px solid green; */
+  color: yellowgreen;
+  background-color: #181818;
+}
+
+.transactions ul li h4 {
+  /* border: 2px solid red; */
+  margin-right: 20px;
+  font-family: "Almendra", serif;
+  font-size: 25px;
+  background-color: #181818;
+}
+
+/* For modern mobile devices */
+
+@media only screen and (max-width: 767px) {
+  .display-name {
+    /* border: 2px solid white; */
+    padding: 20px 20px;
+    text-align: right;
+  }
+
+  .display-name .name{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    color: #023047;
+    /* border: 2px solid red; */
   }
   
-  .expense-tracker h1 {
-    font-size: 40px;
+  .display-name .profile-img{
+    /* border: 2px solid green; */
+    margin-left: 15px;
   }
-  .expense-tracker button {
-    margin-left: 10px;
+  
+  .display-name .profile-img img{
+    border-radius: 50px;
   }
-  .profile {
+
+  .display-name h1 {
+    color: white;
+    font-family: "Almendra", serif;
+    font-size: 25px;
+  }
+
+  .display-name h1 span {
+    text-transform: capitalize !important;
+    color: #00a700;
+  }
+
+  .display-name .current-time {
+    color: white;
+    font-family: "Almendra", serif;
+    font-size: 25px;
+  }
+
+  /* Dashboard Content */
+
+  .dashboard-content1 {
+    /* border: 2px solid green; */
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    align-items: left;
+    justify-content: center;
+    /* padding-top: 22px; */
+  }
+
+  .dashboard-content1 .balance {
+    color: white;
+    /* border: 1px solid green; */
+    border-radius: 10px;
+    height: 13vh;
+    width: 37vh;
+    background-color: #181818;
+    margin-bottom: 20px;
+  }
+
+  .dashboard-content1 .income {
+    color: white;
+    /* border: 1px solid green; */
+    border-radius: 10px;
+    height: 13vh;
+    width: 37vh;
+    background-color: #181818;
+    margin-bottom: 20px;
+  }
+
+  .dashboard-content1 .expenses {
+    color: white;
+    /* border: 1px solid green; */
+    border-radius: 10px;
+    height: 13vh;
+    width: 37vh;
+    background-color: #181818;
+  }
+
+  .dashboard-content1 h4 {
+    color: #00a700;
+    background-color: #181818;
+    font-family: "Almendra", serif;
+    font-size: 25px;
+    width: 100%;
+    /* border: 2px solid red; */
+  }
+
+  .dashboard-content1 p {
+    background-color: #181818;
+    font-family: "Amarante", serif;
+    font-size: 25px;
+    width: 100%;
+  }
+
+  /* Add Balance Details */
+
+  .add-Balance-Details {
+    /* border: 2px solid red; */
+    margin-top: 65px;
+  }
+
+  .add-Balance-Details h2 {
+    color: #00a700;
+    text-align: center;
+    font-family: "Almendra", serif;
+    font-size: 60px;
+  }
+
+  .add-Balance-Details .add-transaction {
+    /* border: 2px solid white; */
+    padding: 10px 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .add-Balance-Details form {
+    /* border: 2px solid yellow !important; */
+    width: 100%;
+    background-color: #181818;
+    border-radius: 10px;
+    padding: 20px 20px;
+    /* padding: 10px 20px 20px 20px; */
+  }
+
+  .add-Balance-Details form label {
+    color: white;
+    background-color: #181818;
+    font-family: "Amarante", serif;
+    margin-bottom: 10px;
+    font-size: 31px;
+  }
+
+  .mandatory {
+    color: #00a700;
+    background-color: #181818;
+  }
+
+  .add-Balance-Details form input {
+    color: white;
+    margin-bottom: 20px;
+    background-color: #181818;
+    /* border-color: #00a700; */
+    border: 2px solid #00a700;
+    border-radius: 6px;
+    padding: 10px 0px 10px 10px;
+    font-size: 30px;
+  }
+
+  .add-Balance-Details form input:focus {
+    outline: 2px solid #00a700;
+  }
+
+  .add-Balance-Details form .form-detail {
+    width: 100%;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .add-Balance-Details form .radio-btn {
+    accent-color: #00a700;
+  }
+   
+  input[type="radio"] {
+    width: 5%;
+    height: 2rem;
+  }
+
+  .add-Balance-Details form button {
+    color: black;
+    background-color: white;
+    padding: 10px 10px;
+    text-transform: uppercase;
+    font-family: "Amarante", serif;
+    border: transparent;
+    border-radius: 10px;
+    font-size: 30px;
+    margin-top: 15px;
+  }
+
+  .add-Balance-Details form button:hover {
+    background-color: #00a700;
+    color: white;
+    border: transparent;
+    transition: all 0.3s ease;
+  }
+
+  /* display transaction details */
+
+  .transactions {
+    /* border: 2px solid red; */
+    margin-top: 40px;
+    padding: 20px 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 200px;
-  }
-  .profile-photo {
-    width: 200px;
-    border-radius: 50%;
-  }
-  
-  .sign-out-button {
-    border: none;
-    margin-top: 50px;
-    width: 150px;
-    background: #3498db;
-    background-image: linear-gradient(to bottom, #3498db, #2980b9);
-    border-radius: 10px;
-    color: #ffffff;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
-  }
-  
-  .sign-out-button:hover {
-    background: #3cb0fd;
-  
-    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  .transactions {
-    margin-left: 430px;
-    margin-top: 20px;
-    padding-left: 10px;
-    width: 600px;
-    height: 400px;
-    overflow: auto;
-    border: 3px solid #023047;
+    justify-content: center;
   }
 
-.userName{
+  .transactions h3 {
+    color: #00a700;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Almendra", serif;
+    font-size: 45px;
+  }
+
+  .transactions ul {
+    /* border: 2px solid yellow; */
+    width: 90%;
+    padding: 15px 15px;
+    border-radius: 5px;
+    background-color: #181818;
+    --sb-track-color: #00a7004d;
+    --sb-thumb-color: #00a700;
+    --sb-size: 7px;
+    max-height: 50vh;
+    overflow-y: scroll;
+  }
+
+  .transactions ul::-webkit-scrollbar {
+    width: var(--sb-size);
+  }
+
+  .transactions ul::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 2px;
+  }
+
+  .transactions ul::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 2px;
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    .transactions ul {
+      scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+  }
+
+  .transactions ul li {
+    /* border: 2px solid green; */
+    list-style: none;
+    color: white;
+    display: flex;
+    background-color: #181818;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .transactions ul li .transaction-description {
+    color: white;
+    width: 80%;
+    text-align: left;
     text-transform: capitalize;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #181818;
+    font-family: "Amarante", serif;
+    /* border: 2px solid white; */
+  }
+
+  .transactions ul li .transaction-details {
+    /* border: 2px solid red; */
+    width: 100%;
+    background-color: #181818;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .transactions ul li .transaction-details .transaction-amount {
+    /* border: 2px solid green; */
+    padding-right: 10px;
+    background-color: #181818;
+    width: 100%;
+  }
+
+  .transactions ul li .transaction-details .transaction-type {
+    /* border: 2px solid green; */
+    text-align: right;
+    text-transform: capitalize;
+    background-color: #181818;
+    width: 30%;
+  }
+
+  .transactions ul li .transaction-details .transaction-date {
+    /* border: 2px solid green; */
+    color: yellowgreen;
+    background-color: #181818;
+    width: 90%;
+    /* font-size: 20px; */
+  }
+
+  .transactions ul li h4 {
+    /* border: 2px solid red; */
+    margin-right: 20px;
+    font-family: "Almendra", serif;
+    font-size: 25px;
+    background-color: #181818;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .display-name {
+    /* border: 2px solid white; */
+    padding: 20px 20px;
+    text-align: right;
+  }
+
+  .display-name h1 {
+    color: white;
+    font-family: "Almendra", serif;
+    font-size: 35px;
+  }
+
+  .display-name h1 span {
+    text-transform: capitalize !important;
+    color: #00a700;
+  }
+
+  .display-name .current-time {
+    color: white;
+    font-family: "Almendra", serif;
+    font-size: 35px;
+  }
+
+  /* Dashboard Content */
+
+  .dashboard-content1 {
+    /* border: 2px solid red; */
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+    padding-top: 22px;
+  }
+
+  .dashboard-content1 .balance {
+    color: white;
+    /* border: 1px solid green; */
+    border-radius: 10px;
+    padding: 10px 80px 0px 15px;
+    background-color: #181818;
+    /* margin-right: 40px; */
+  }
+  .dashboard-content1 .income {
+    color: white;
+    /* border: 1px solid green; */
+    border-radius: 10px;
+    padding: 10px 80px 0px 15px;
+    background-color: #181818;
+    /* margin-right: 40px; */
+  }
+  .dashboard-content1 .expenses {
+    color: white;
+    /* border: 1px solid green; */
+    border-radius: 10px;
+    padding: 10px 80px 0px 15px;
+    background-color: #181818;
+    margin-top: 22px;
+  }
+
+  .dashboard-content1 h4 {
+    color: #00a700;
+    background-color: #181818;
+    font-family: "Almendra", serif;
+    font-size: 35px;
+  }
+
+  .dashboard-content1 p {
+    background-color: #181818;
+    font-family: "Amarante", serif;
+    font-size: 35px;
+  }
+
+  /* Add Balance Details */
+
+  .add-Balance-Details {
+    /* border: 2px solid red; */
+    margin-top: 65px;
+  }
+
+  .add-Balance-Details h2 {
+    color: #00a700;
+    text-align: center;
+    font-family: "Almendra", serif;
+    font-size: 50px;
+  }
+
+  .add-Balance-Details .add-transaction {
+    /* border: 2px solid white; */
+    padding: 10px 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .add-Balance-Details form {
+    /* border: 2px solid yellow !important; */
+    width: 100%;
+    background-color: #181818;
+    border-radius: 10px;
+    padding: 10px 20px 20px 20px;
+  }
+
+  .add-Balance-Details form label {
+    color: white;
+    background-color: #181818;
+    font-family: "Amarante", serif;
+    margin-bottom: 10px;
+    font-size: 30px;
+  }
+
+  .mandatory {
+    color: #00a700;
+    background-color: #181818;
+  }
+
+  .add-Balance-Details form input {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 30px;
+    background-color: #181818;
+    /* border-color: #00a700; */
+    border: 2px solid #00a700;
+    border-radius: 6px;
+    padding: 10px 0px 10px 10px;
+  }
+
+  .add-Balance-Details form .transaction-type{
+    /* border: 2px solid red; */
+    font-size: 27px;
+  }
+
+  .add-Balance-Details form input:focus {
+    outline: 2px solid #00a700;
+  }
+
+  .add-Balance-Details form .form-detail {
+    width: 100%;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .add-Balance-Details form .radio-btn {
+    accent-color: #00a700;
+  }
+
+  input[type="radio"] {
+    width: 3%;
+    height: 2rem;
+  }
+
+  .add-Balance-Details form button {
+    color: black;
+    background-color: white;
+    padding: 10px 10px;
+    text-transform: uppercase;
+    font-family: "Amarante", serif;
+    border: transparent;
+    border-radius: 10px;
+    font-size: 30px;
+    margin-top: 15px;
+  }
+
+  .add-Balance-Details form button:hover {
+    background-color: #00a700;
+    color: white;
+    border: transparent;
+    transition: all 0.3s ease;
+  }
+
+  /* display transaction details */
+
+  .transactions {
+    /* border: 2px solid red; */
+    margin-top: 40px;
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .transactions h3 {
+    color: #00a700;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Almendra", serif;
+    font-size: 50px;
+  }
+
+  .transactions ul {
+    /* border: 2px solid yellow; */
+    width: 90%;
+    padding: 15px 15px;
+    border-radius: 5px;
+    background-color: #181818;
+    --sb-track-color: #00a7004d;
+    --sb-thumb-color: #00a700;
+    --sb-size: 7px;
+    max-height: 50vh;
+    overflow-y: scroll;
+  }
+
+  .transactions ul::-webkit-scrollbar {
+    width: var(--sb-size);
+  }
+
+  .transactions ul::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 2px;
+  }
+
+  .transactions ul::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 2px;
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    .transactions ul {
+      scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+  }
+
+  .transactions ul li {
+    list-style: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #181818;
+  }
+
+  .transactions ul li .transaction-description {
+    color: white;
+    width: 100%;
+    text-align: left;
+    text-transform: capitalize;
+    background-color: #181818;
+    font-family: "Amarante", serif;
+    /* border: 2px solid white; */
+  }
+
+  .transactions ul li .transaction-details {
+    /* border: 2px solid red; */
+    width: 100%;
+    background-color: #181818;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .transactions ul li .transaction-details .transaction-amount {
+    /* border: 2px solid green; */
+    padding-right: 10px;
+    width: 50%;
+    background-color: #181818;
+  }
+
+  .transactions ul li .transaction-details .transaction-type {
+    /* border: 2px solid green; */
+    text-align: right;
+    text-transform: capitalize;
+    background-color: #181818;
+    width: 50%;
+  }
+
+  .transactions ul li .transaction-details .transaction-date {
+    /* border: 2px solid green; */
+    color: yellowgreen;
+    background-color: #181818;
+    width: 50%;
+    margin-left: 10px;
+  }
+
+  .transactions ul li h4 {
+    /* border: 2px solid red; */
+    margin-right: 20px;
+    font-family: "Almendra", serif;
+    font-size: 25px;
+    background-color: #181818;
+  }
 }

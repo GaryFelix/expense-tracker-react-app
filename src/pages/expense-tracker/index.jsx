@@ -1,126 +1,231 @@
-import { useState } from 'react';
-import './style.css';
-import { useAddTransactions } from '../../hooks/useAddTransactions'
-import { useGetTransactions } from '../../hooks/useGetTransactions';
-import { useGetUserInfo } from '../../hooks/useGetUserInfo';
-import { useNavigate } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
-import { auth } from '../../config/firebase-config';
+import { useState } from "react";
+import "./style.css";
+import { useAddTransactions } from "../../hooks/useAddTransactions";
+import { useGetTransactions } from "../../hooks/useGetTransactions";
+import { useGetUserInfo } from "../../hooks/useGetUserInfo";
+import { Link, useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../../config/firebase-config";
+import { useAddBalance } from "../../hooks/useAddBalance";
+import siteLogo from "../../images/logo.png";
 
 export const ExpenseTracker = () => {
-
   const [description, setDescription] = useState("");
   const [transactionAmount, setTransactionAmount] = useState(0);
   const [transactionType, setTransactionType] = useState("expense");
 
   const navigate = useNavigate();
-  
+
   const { addTransaction } = useAddTransactions();
+  const { addBalance } = useAddBalance();
   const { transactions, transactionTotals } = useGetTransactions();
+  // const { name } = useGetUserInfo();
   const { name, profilePhoto } = useGetUserInfo();
 
-  const {balance, income, expenses} = transactionTotals;
+  const { balance, income, expenses } = transactionTotals;
+
+  let updateBalance = 0;
 
   const onSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     addTransaction({
       description,
       transactionAmount,
-      transactionType, 
+      transactionType,
     });
 
     setDescription("");
     setTransactionAmount(0);
-  }
+
+    if (transactionType === "income") {
+      updateBalance = Number(balance) + Number(transactionAmount);
+    } else {
+      updateBalance = balance - transactionAmount;
+    }
+
+    addBalance({
+      updateBalance,
+      description,
+    });
+  };
 
   const signOutUser = async () => {
-    try{
+    try {
       await signOut(auth);
       localStorage.clear();
       navigate("/");
-    }
-    catch (err){
+    } catch (err) {
       console.error(err);
     }
-  }
+  };
 
-  
+  let createdDate = new Date().toDateString();
 
   return (
     <>
       <div className="expense-tracker">
         <div className="container">
-          <h1><span className='userName'>{name}</span>'s EXPENSE TRACKER</h1>
-          <div className="balance">
-            <h2>Your Balance</h2>
-            {balance >= 0 ? (
-              <h2>${balance}</h2>
-            ):(
-              <h2>-${balance * -1}</h2>
-            )}
+          {/* navbar content */}
+          <nav className="navbar-content">
+            <div className="site-logo">
+              <img src={siteLogo} alt="site-logo" draggable="false" />
+            </div>
+            <div className="nav-links">
+              <ul>
+                <li>
+                  <Link to="#" style={{ color: "#00a700" }}>
+                    Dashboard
+                  </Link>
+                </li>
+                {/* <li>
+                  <Link to="#">Profile</Link>
+                </li> */}
+                <li>
+                  <Link to="#" onClick={signOutUser}>
+                    Signout
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <div className="display-name">
+            <div className="name">
+              <h1>
+                HOWDY
+                <span className="userName"> {name},</span>
+              </h1>
+              <div>
+                <h2 className="current-time">{createdDate}</h2>
+              </div>
+            </div>
+            <div className="profile-img">
+              <img src={profilePhoto} alt="profile-pic" draggable='false' />
+            </div>
           </div>
-          <div className="summary">
+          <div className="dashboard-content1">
+            <div className="balance">
+              <h4>Your Balance</h4>
+              {balance >= 0 ? <p>$ {balance}</p> : <p>-$ {balance * -1}</p>}
+            </div>
             <div className="income">
-              <h4> Income</h4>
-              <p>${income}</p>
+              <h4>Total Income</h4>
+              <p>$ {income}</p>
             </div>
             <div className="expenses">
-              <h4> Expenses</h4>
-              <p>${expenses}</p>
+              <h4>Total Expenses</h4>
+              <p>$ {expenses}</p>
             </div>
           </div>
-          <form className="add-transaction" onSubmit={onSubmit}>
-            <input
-              type="text"
-              placeholder="Description"
-              value={description}
-              required
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <input
-              type="number"
-              placeholder="Amount"
-              value={transactionAmount}
-              required
-              onChange={(e) => setTransactionAmount(e.target.value)}
-            />
-            <input
-              type="radio"
-              id="expense"
-              value="expense"
-                checked={transactionType === "expense"}
-                onChange={(e) => setTransactionType(e.target.value)}
-            />
-            <label htmlFor="expense"> Expense</label>
-            <input
-              type="radio"
-              id="income"
-              value="income"
-              checked={transactionType === "income"}
-              onChange={(e) => setTransactionType(e.target.value)}
-            />
-            <label htmlFor="income"> Income</label>
-
-            <button type="submit"> Add Transaction</button>
-          </form>
+          <div className="add-Balance-Details">
+            <h2>Add Transaction Details</h2>
+            <div className="add-transaction">
+              <form onSubmit={onSubmit}>
+                <label htmlFor="description">
+                  <span className="mandatory">*</span>&nbsp;Enter Your
+                  Transaction Name:
+                </label>
+                <br />
+                <input
+                  type="text"
+                  placeholder="Description"
+                  name="description"
+                  value={description}
+                  className="form-detail"
+                  required
+                  autoComplete="off"
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+                <br />
+                <label htmlFor="amount">
+                  <span className="mandatory">*</span>&nbsp;Manually Enter Your
+                  Transaction Amount:
+                </label>
+                <br />
+                <input
+                  type="number"
+                  placeholder="Amount"
+                  name="amount"
+                  className="form-detail amount"
+                  value={transactionAmount}
+                  required
+                  onChange={(e) => setTransactionAmount(e.target.value)}
+                />
+                <br />
+                <label htmlFor="type" className="transaction-type">
+                  <span className="mandatory">*</span>&nbsp;Select Your
+                  Transaction Type:
+                </label>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input
+                  type="radio"
+                  id="expense"
+                  name="expense"
+                  className="radio-btn"
+                  value="expense"
+                  checked={transactionType === "expense"}
+                  onChange={(e) => setTransactionType(e.target.value)}
+                />
+                <label htmlFor="expense"> Expense</label>
+                &nbsp;&nbsp;&nbsp;
+                <input
+                  type="radio"
+                  id="income"
+                  value="income"
+                  name="income"
+                  className="radio-btn"
+                  checked={transactionType === "income"}
+                  onChange={(e) => setTransactionType(e.target.value)}
+                />
+                <label htmlFor="income"> Income</label>
+                <br />
+                <button type="submit"> Add Transaction</button>
+              </form>
+            </div>
+          </div>
         </div>
-        {profilePhoto && <div className='profile-photo'>
-            <img src={profilePhoto} alt='profilePicture' />
-            <button className='sign-out-button' onClick={signOutUser}>Sign Out</button>
-          </div>}
-
+        {/* {profilePhoto && (
+          <div className="profile-photo">
+            <img src={profilePhoto} alt="profilePicture" />
+            <button className="sign-out-button" onClick={signOutUser}>
+              Sign Out
+            </button>
+          </div>
+        )} */}
       </div>
       <div className="transactions">
-        <h3>Transactions</h3>
+        <h3>{name} &nbsp;Transactions</h3>
         <ul>
-          {transactions.map((transaction)=>{
-            const {description, transactionAmount, transactionType} = transaction;
+          {transactions.map((transaction) => {
+            const {
+              description,
+              transactionAmount,
+              transactionType,
+              currentDate,
+            } = transaction;
             return (
-              <li>
-                <h4>{description}</h4>
-                <p>${transactionAmount} | <label>{transactionType}</label></p>
+              <li key={transaction.id}>
+                <h4 className="transaction-description">{description}</h4>&nbsp;
+                <div className="transaction-details">
+                  <h4 className="transaction-amount">$ {transactionAmount}</h4>
+                  <h4 className="transaction-type">{transactionType}</h4>
+                  <h4 className="transaction-date">{currentDate}</h4>
+                </div>
+                {/* <div className="transaction-amount">
+                  <p>${transactionAmount}</p>
+                </div>
+                <div className="transaction-type">
+                  <p>{transactionType}</p>
+                </div>
+                <div className="transaction-date">
+                  <p>{currentDate}</p>
+                </div> */}
+                {/* <p>
+                  <label>${transactionAmount}</label>&nbsp;
+                  <label>{transactionType}</label>&nbsp;
+                  <label>{currentDate}</label>
+                </p> */}
               </li>
-            )
+            );
           })}
         </ul>
       </div>

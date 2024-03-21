@@ -11,7 +11,8 @@ export const useAddTransactions = () => {
             userID,
             description,
             transactionAmount, 
-            transactionType, 
+            transactionType,
+            currentDate: new Date().toDateString(),
             createdAt: serverTimestamp(),
         });
     };
