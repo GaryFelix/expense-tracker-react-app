@@ -214,7 +214,7 @@ export const Auth = () => {
           className={`go-to-top-button ${isVisible ? "visible" : ""}`}
           onClick={scrollToTop}
         >
-          <FontAwesomeIcon icon={faArrowUp} className="goto-top-icon" />
+          <FontAwesomeIcon icon={ faArrowUp } className="goto-top-icon" />
         </button>
       </div>
       {/* footer content */}
