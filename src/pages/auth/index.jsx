@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 import siteLogo from "../../images/logo.png";
 import hero3img from "../../images/hero3.png";
@@ -214,7 +214,8 @@ export const Auth = () => {
           className={`go-to-top-button ${isVisible ? "visible" : ""}`}
           onClick={scrollToTop}
         >
-          <FontAwesomeIcon icon={ faArrowUp } className="goto-top-icon" />
+{/*           <FontAwesomeIcon icon={ faArrowUp } className="goto-top-icon" /> */}
+          GoTo Top
         </button>
       </div>
       {/* footer content */}
