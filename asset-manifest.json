@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/expense-tracker-react-app/static/css/main.8b474a4c.css",
+    "main.js": "/expense-tracker-react-app/static/js/main.58fa7eb3.js",
+    "static/media/hero3.png": "/expense-tracker-react-app/static/media/hero3.1e39b0d19f8f93e0a88b.png",
+    "static/media/hero1img.png": "/expense-tracker-react-app/static/media/hero1img.05caa9f1d4ac528431aa.png",
+    "static/media/hero 2 img.png": "/expense-tracker-react-app/static/media/hero 2 img.1c69178927180fd16e06.png",
+    "index.html": "/expense-tracker-react-app/index.html",
+    "main.8b474a4c.css.map": "/expense-tracker-react-app/static/css/main.8b474a4c.css.map",
+    "main.58fa7eb3.js.map": "/expense-tracker-react-app/static/js/main.58fa7eb3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8b474a4c.css",
+    "static/js/main.58fa7eb3.js"
+  ]
+}
