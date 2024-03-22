@@ -60,7 +60,6 @@ export const Auth = () => {
 
   const signInWithGoogle = async () => {
     const results = await signInWithPopup(auth, provider);
-    // console.log(results);
     const authInfo = {
       userID: results.user.uid,
       name: results.user.displayName,
@@ -215,7 +214,7 @@ export const Auth = () => {
           onClick={scrollToTop}
         >
 {/*           <FontAwesomeIcon icon={ faArrowUp } className="goto-top-icon" /> */}
-          GoTo Top
+          Goto Top
         </button>
       </div>
       {/* footer content */}

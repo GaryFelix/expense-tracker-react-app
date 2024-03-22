@@ -77,9 +77,6 @@ export const ExpenseTracker = () => {
                     Dashboard
                   </Link>
                 </li>
-                {/* <li>
-                  <Link to="#">Profile</Link>
-                </li> */}
                 <li>
                   <Link to="#" onClick={signOutUser}>
                     Signout
@@ -183,14 +180,6 @@ export const ExpenseTracker = () => {
             </div>
           </div>
         </div>
-        {/* {profilePhoto && (
-          <div className="profile-photo">
-            <img src={profilePhoto} alt="profilePicture" />
-            <button className="sign-out-button" onClick={signOutUser}>
-              Sign Out
-            </button>
-          </div>
-        )} */}
       </div>
       <div className="transactions">
         <h3>{name} &nbsp;Transactions</h3>
@@ -210,20 +199,6 @@ export const ExpenseTracker = () => {
                   <h4 className="transaction-type">{transactionType}</h4>
                   <h4 className="transaction-date">{currentDate}</h4>
                 </div>
-                {/* <div className="transaction-amount">
-                  <p>${transactionAmount}</p>
-                </div>
-                <div className="transaction-type">
-                  <p>{transactionType}</p>
-                </div>
-                <div className="transaction-date">
-                  <p>{currentDate}</p>
-                </div> */}
-                {/* <p>
-                  <label>${transactionAmount}</label>&nbsp;
-                  <label>{transactionType}</label>&nbsp;
-                  <label>{currentDate}</label>
-                </p> */}
               </li>
             );
           })}
